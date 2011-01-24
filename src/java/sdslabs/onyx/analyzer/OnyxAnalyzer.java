@@ -42,6 +42,9 @@ class OnyxAnalyzer extends Analyzer{
   public OnyxAnalyzer(OnyxConfig config){
     tokenizer = config.get("tokenizer");      
     filterList = new ArrayList<HashMap<String,String>>();
+    name = config.get("name");
+    filedName = config.get("fieldName");
+    filedClass = config.get("fieldClass");
   }
 
   public void addFilter(String filter, HashMap<String,String> params){
@@ -66,8 +69,33 @@ class OnyxAnalyzer extends Analyzer{
   }
 
   public TokenStream tokenStream(String fieldName, Reader reader){
+    fieldName = fieldName;
     iniOptions(reader);  
     return tkStream;
+  }
+
+  public void setName(String name){
+    this.name = name;
+  }
+  
+  public String getName(){
+    return name;
+  }
+
+  public void setFieldClass(String fieldClass){
+    this.fieldClass = fieldClass;
+  }
+  
+  public String getFieldClass(){
+    return fieldClass;
+  }
+
+  public void setFieldName(String fieldName){
+    this.fieldName = fieldName;
+  }
+  
+  public String getFieldName(){
+    return fieldName;
   }
 
   private void iniOptions(Reader reader){
