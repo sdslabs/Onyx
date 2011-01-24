@@ -1,6 +1,6 @@
 package sdslabs.onyx.document;
 
-interface OnyxDocument {
+public interface OnyxDocument {
 
   public void addDocument(File file);
   public void addMetaData(HashMap<String,String> metadata);
