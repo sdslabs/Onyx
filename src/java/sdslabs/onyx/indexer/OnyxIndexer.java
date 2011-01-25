@@ -3,7 +3,7 @@ package sdslabs.onyx.indexer;
 public class OnyxIndexer {
   
   private OnyxConfig indexerConfig;
-  private HashMap<String, String> standardAnalysis;
+  private HashMap<String, OnyxAnalyzer> analyzers;
   private IndexWriter writer;
   private boolean compound;
   private OnyxDocumentDirectory dir;
@@ -12,22 +12,15 @@ public class OnyxIndexer {
     
     indexerConfig = config;
     iniAnalysis();
-    dir = FSDirectory.getDirectory(config.indexDir);
+    dir = FSDirectory.getDirectory(config.getIndexDir());
     writer = new IndexWriter(dir, new StandardAnalyzer(), true);
     
   }
   
   private void iniAnalysis(){
-       
-         
-  }
-
-  public boolean addMetaData(HashMap<String,String> metaData){
-
-    if( dir == null ){
-      return false;
-    }
-
+    for( int i = 0; i < config.numAnalyzer(); i++){
+      analyzers.put(config.getAnalyzer(i), new OnyxAnalyzer(indexerConfig, config.getAnalyzer(i)));    
+    }     
   }
 
   public void addDocument( OnyxDocument doc ){
@@ -43,7 +36,7 @@ public class OnyxIndexer {
 
   public void index(){
     
-    writer.setUseCompoundFie(compound);
+    writer.setUseCompoundField(compound);
     for( OnyxDocument doc = dir.iterateDocument(); doc != null; doc = dir.iterateDocument()){
       writer.addDocument(doc.getDocument(), getAnalyzer(doc.getType()));
     }
@@ -51,13 +44,9 @@ public class OnyxIndexer {
     writer.close();
 
   }
-
-  public void customizeAnalysis(HashMap<String, String> config){
-    sdf
-  }
  
-  private Analyzer getAnalyzer( String type ){
-    sdf   
+  private Analyzer getAnalyzer( String name ){
+    return analyzers.get(name);
   }
   
 }
