@@ -52,7 +52,7 @@ public class OnyxFilterFactory {
        return NumericPayloadTokenFilerFactory(params, tkStream);
      case PorterStemFilterFactory:
        return PorterStemFilterFactory(params, tkStream);
-     case PositionS=FilterFactory:
+     case PositionFilterFactory:
        return PositionFilterFactory(params, tkStream);
      case ReverseStringFilterFactory:
        return ReverseStringFilterFactory(params, tkStream);
@@ -77,4 +77,3 @@ public class OnyxFilterFactory {
    }    
  }
   
-}
