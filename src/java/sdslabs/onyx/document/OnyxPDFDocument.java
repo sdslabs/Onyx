@@ -1,6 +1,6 @@
 package sdslabs.onyx.document;
 
-class OnyxPDFDocument {
+public class OnyxPDFDocument implements OnyxDocument {
 
 
   public OnyxPDFDocument(){

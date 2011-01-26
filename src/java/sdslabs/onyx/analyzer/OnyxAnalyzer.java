@@ -37,7 +37,7 @@ class OnyxAnalyzer extends Analyzer{
     passThroughTokenizer(reader, this.tokenizer.get(i));
     List<Map<String,String>> filters = filterList.get(index);
     for( int i = 0; i < filters.size(); i++){
-      OnyxFilterFactory.filter(filters.get(i), tkStream);
+      tkStream = OnyxFilterFactory.filter(filters.get(i), tkStream);
     }
   }
   

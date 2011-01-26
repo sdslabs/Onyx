@@ -25,7 +25,8 @@ public class OnyxIndexer {
 
   public void addDocument( OnyxDocument doc ){
     
-    dir = new OnyxDocumentDirectory();
+    if( dir == null)
+      dir = new OnyxDocumentDirectory();
     dir.addDocument(doc);
     
   }
