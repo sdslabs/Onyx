@@ -6,6 +6,9 @@ public class OnyxPDFDocument implements OnyxDocument {
   public OnyxPDFDocument(){
 
   }
+  public OnyxPDFDocument(File file, Map<String,List<String>> assocKeyword){
+
+  }
 
   public void addDocument(File file){
 

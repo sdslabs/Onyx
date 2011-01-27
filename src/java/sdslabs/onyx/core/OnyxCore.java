@@ -23,10 +23,6 @@ public class OnyxCore.java {
 
   }
 
-  private static boolean getDocument(){
-       
-  }
-
   public static boolean addFileToIndex(Map<String,String> info){
     ini();
     File tmp = fetchFile(info);
